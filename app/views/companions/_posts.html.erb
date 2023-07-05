@@ -1,0 +1,6 @@
+<%= form_with model: [@companion, @companion.posts.build] do |form| %>
+    <%= form.text_area :body, placeholder: "Your post here" %>
+    <br>
+    <%= form.submit %>
+
+<% end %>
