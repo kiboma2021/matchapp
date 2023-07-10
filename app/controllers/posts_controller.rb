@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     before_action :set_post, only: [:create, :destroy]
 
     def create
-        @post = @companion.posts.build(post_params)
+        @post = @companion.posts.new(post_params)
 
         respond_to do |format|
             if @post.save
