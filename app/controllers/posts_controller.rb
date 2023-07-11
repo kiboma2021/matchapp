@@ -1,8 +1,7 @@
 class PostsController < ApplicationController
-    before_action :get_companion
-    before_action :set_post, only: [:create, :destroy]
 
     def create
+        @companion =Companion.find(params[:companion_id])
         @post = @companion.posts.new(post_params)
 
         respond_to do |format|
@@ -25,14 +24,6 @@ class PostsController < ApplicationController
 
 
     private
-
-    def get_companion
-        @companion =Companion.find(params[:companion_id])
-    end
-
-    def set_post
-        @post = @companion.posts.find(params[:id])
-    end
 
     def post_params
         params.require(:companion).permit(:body, :companion_id)
